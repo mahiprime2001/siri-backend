@@ -9,8 +9,7 @@ wheels/
 # Virtual environments
 .venv
 
-# Local env/secrets
-.env
+
 
 # Local DB
 db.sqlite3
