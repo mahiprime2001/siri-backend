@@ -5,13 +5,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY pyproject.toml README.md ./
+COPY pyproject.toml uv.lock README.md ./
 COPY siriapp ./siriapp
 COPY auth_api ./auth_api
 COPY manage.py ./
 
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir .
+    && pip install --no-cache-dir uv \
+    && UV_SYSTEM_PYTHON=1 uv sync --frozen --no-dev
 
 EXPOSE 5050
 
