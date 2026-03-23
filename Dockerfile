@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir --upgrade pip \
 
 EXPOSE 5050
 
-CMD ["sh", "-c", "python manage.py migrate && gunicorn siriapp.wsgi:application --bind 0.0.0.0:5050"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn siriapp.wsgi:application --bind 0.0.0.0:8080"]
