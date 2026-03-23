@@ -14,6 +14,6 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir uv \
     && UV_SYSTEM_PYTHON=1 uv sync --frozen --no-dev
 
-EXPOSE 5050
+EXPOSE 8080
 
-CMD ["sh", "-c", "python manage.py migrate && gunicorn siriapp.wsgi:application --bind 0.0.0.0:8080"]
+CMD ["sh", "-c", "uv run manage.py migrate && uv run gunicorn siriapp.wsgi:application --bind 0.0.0.0:8080"]
