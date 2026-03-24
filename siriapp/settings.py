@@ -128,13 +128,15 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# CORS
-CORS_ALLOWED_ORIGINS = [
-    origin.strip()
-    for origin in os.environ.get("CORS_ALLOWED_ORIGINS", "").split(",")
-    if origin.strip()
-]
+# CORS (allow all)
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+
+# HTTPS only (enable in production behind a TLS proxy)
+_force_https = os.environ.get("DJANGO_FORCE_HTTPS", "0") == "1"
+SECURE_SSL_REDIRECT = _force_https
+SESSION_COOKIE_SECURE = _force_https
+CSRF_COOKIE_SECURE = _force_https
 
 # JWT / Auth settings
 _access_minutes = int(os.environ.get("ACCESS_TOKEN_MINUTES", "15"))
