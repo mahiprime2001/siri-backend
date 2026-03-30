@@ -131,6 +131,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CORS (allow all)
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_HEADERS = True
 
 # HTTPS only (enable in production behind a TLS proxy)
 _force_https = os.environ.get("DJANGO_FORCE_HTTPS", "0") == "1"
